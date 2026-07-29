@@ -10,7 +10,7 @@ class Box {
 }
 
 /**
- * Student Name: Lorraine
+ * Student Name: Lorraine Cabatuan
  * Course: Object-Oriented Programming
  * Lab Activity 4: Methods & Parameter Passing
  */
@@ -21,7 +21,7 @@ public class ToolBox {
         int choice = -1;
 
         System.out.println("=========================================");
-        System.out.println(" Welcome to Lorraine's Java Toolbox App ");
+        System.out.println(" Welcome to Lorraine Cabatuan's Java Toolbox App ");
         System.out.println("=========================================");
 
         while (choice != 0) {
@@ -71,9 +71,18 @@ public class ToolBox {
                             "Invalid input. Please enter a valid whole number.");
                     }
 
+                    // Formats number list matching sample run format
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < userNumbers.length; i++) {
+                        sb.append(userNumbers[i]);
+                        if (i < userNumbers.length - 1) {
+                            sb.append(", ");
+                        }
+                    }
+
                     // Passes array to varargs parameter method
                     int total = sum(userNumbers);
-                    System.out.println("\nResult: Sum = " + total);
+                    System.out.println("\nSum of " + sb + " = " + total);
                     break;
 
                 case 4:
@@ -185,7 +194,7 @@ public class ToolBox {
         }
     }
 
-    // Validates name: non-empty, non-whitespace, no numbers
+    // Validates name: letters, spaces, hyphens, and apostrophes only
     private static String readValidName(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -193,8 +202,8 @@ public class ToolBox {
             
             if (input.isEmpty()) {
                 System.out.println("Error: Name cannot be empty or blank.");
-            } else if (input.matches(".*\\d.*")) {
-                System.out.println("Error: Name cannot contain numbers.");
+            } else if (!input.matches("^[a-zA-Z\\s'-]+$")) {
+                System.out.println("Error: Name can only contain letters, spaces, hyphens, or apostrophes.");
             } else {
                 return input;
             }
